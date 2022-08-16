@@ -2,6 +2,7 @@
 
 import { NextApiRequest, NextApiResponse } from "next";
 import { unstable_getServerSession as getServerSession } from "next-auth";
+
 import { authOptions as nextAuthOptions } from "./auth/[...nextauth]";
 
 const restricted = async (req: NextApiRequest, res: NextApiResponse) => {
