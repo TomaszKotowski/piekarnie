@@ -24,10 +24,12 @@ const bakeryData = [
 
 async function main() {
   await prisma.bakery.deleteMany();
+  console.info("Bakery table deleted from db");
 
   bakeryData.forEach(async (data) => {
     return prisma.bakery.create({ data });
   });
+  console.info("Bakery seed date created");
 }
 
 main()
