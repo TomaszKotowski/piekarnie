@@ -73,6 +73,7 @@ model SocialMediaLinks {
 model Bakery {
     id      String @id @default(cuid())
     name    String
+    info    String
     address String
 
     // socialMediaLinks   SocialMediaLinks @relation(fields: [socialMediaLinksId], references: [id], onDelete: Cascade, onUpdate: Cascade)

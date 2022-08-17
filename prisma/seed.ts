@@ -11,14 +11,17 @@ const bakeryData = [
   {
     name: "Pajda chleba",
     address: "Młynowa",
+    info: "Super białasy w piątki",
   },
   {
-    name: "Sztuka chleba",
+    name: "Sztuka chleba i wina",
     address: "Krakowska",
+    info: "U nas znajdziesz najlepsze chałki i wina na udany weekend.",
   },
   {
     name: "SzwieŻo upieczona",
     address: "Cystersów",
+    info: "Super piekarnia w Krakowie",
   },
 ];
 
