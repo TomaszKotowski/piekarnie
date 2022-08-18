@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
+import LoginButton from "@/components/login-button";
+
 import { inferQueryOutput, trpc } from "../utils/trpc";
 
 type Bakery = inferQueryOutput<"bakery.getFirst">;
@@ -16,6 +18,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <LoginButton />
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
         <div className="flex flex-col space-y-4">
           {bakeries?.map(({ id, name, info, address, socialMediaLinks }) => (

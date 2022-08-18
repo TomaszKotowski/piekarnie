@@ -47,6 +47,7 @@ const bakeryData = [
 ];
 
 async function main() {
+  // bakeries
   await prisma.bakery.deleteMany();
   console.info("Bakery table deleted from db");
   await prisma.socialMediaLinks.deleteMany();
