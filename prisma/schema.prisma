@@ -68,6 +68,8 @@ model SocialMediaLinks {
     facebook  String
     instagram String
     webpage   String
+
+    Bakery Bakery?
 }
 
 model Bakery {
@@ -76,6 +78,6 @@ model Bakery {
     info    String
     address String
 
-    // socialMediaLinks   SocialMediaLinks @relation(fields: [socialMediaLinksId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-    // socialMediaLinksId String
+    socialMediaLinksId String           @unique
+    socialMediaLinks   SocialMediaLinks @relation(fields: [socialMediaLinksId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
