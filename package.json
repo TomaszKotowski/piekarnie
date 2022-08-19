@@ -13,7 +13,8 @@
     "check-types": "tsc --pretty --noEmit",
     "postinstall": "prisma generate",
     "prepare": "husky install",
-    "db-seed": "npx prisma db seed"
+    "db-seed": "prisma db seed",
+    "setup": "prisma generate && prisma migrate deploy && prisma db seed"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.4",
