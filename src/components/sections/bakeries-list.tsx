@@ -2,11 +2,11 @@ import { trpc } from "@/utils/trpc";
 
 import { Card } from "../card";
 
-export function CardsList() {
+export function BakeriesList() {
   const { data: bakeries } = trpc.useQuery(["bakery.getAll"]);
 
   return (
-    <div className="flex flex-col md:flex-row space-y-4 lg:space-x-4 px-4 lg:px-0">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mx-3">
       {bakeries?.map(({ id, name, info, address, socialMediaLinks }) => (
         <Card
           key={id}

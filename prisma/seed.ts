@@ -3,48 +3,25 @@
  *
  * @link https://www.prisma.io/docs/guides/database/seed-database
  */
+import { faker } from "@faker-js/faker";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const bakeryData = [
-  {
-    name: "Pajda chleba",
-    address: "Młynowa",
-    info: "Super białasy w piątki",
-    socialMediaLinks: {
-      create: {
-        facebook: "#",
-        instagram: "#",
-        webpage: "#",
-      },
+const fakerBakery = () => ({
+  name: faker.company.name(),
+  address: `${faker.address.streetAddress(true)}, ${faker.address.cityName()}`,
+  info: faker.lorem.lines(2),
+  socialMediaLinks: {
+    create: {
+      facebook: "#",
+      instagram: "#",
+      webpage: "#",
     },
   },
-  {
-    name: "Sztuka chleba i wina",
-    address: "Krakowska",
-    info: "U nas znajdziesz najlepsze chałki i wina na udany weekend.",
-    socialMediaLinks: {
-      create: {
-        facebook: "#",
-        instagram: "#",
-        webpage: "#",
-      },
-    },
-  },
-  {
-    name: "SzwieŻo upieczona",
-    address: "Cystersów",
-    info: "Super piekarnia w Krakowie",
-    socialMediaLinks: {
-      create: {
-        facebook: "#",
-        instagram: "#",
-        webpage: "#",
-      },
-    },
-  },
-];
+});
+
+const fakerRounds = 10;
 
 async function main() {
   // bakeries
@@ -52,10 +29,9 @@ async function main() {
   console.info("Bakery table deleted from db");
   await prisma.socialMediaLinks.deleteMany();
   console.info("Social media links table deleted from db");
-
-  bakeryData.forEach(async (data) => {
-    return prisma.bakery.create({ data });
-  });
+  for (let index = 0; index < fakerRounds; index++) {
+    await prisma.bakery.create({ data: fakerBakery() });
+  }
 
   console.info("Bakery seed date created");
 }

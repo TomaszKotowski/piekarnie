@@ -1,5 +1,6 @@
 // src/pages/_app.tsx
 import "../styles/globals.css";
+import "remixicon/fonts/remixicon.css";
 
 import { withTRPC } from "@trpc/next";
 import type { AppType } from "next/dist/shared/lib/utils";

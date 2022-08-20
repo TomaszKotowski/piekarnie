@@ -1,15 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
-import { Card } from "@/components/card";
-import { CardsList } from "@/components/sections/cards-list";
+import { BakeriesList } from "@/components/sections/bakeries-list";
 import { Hero } from "@/components/sections/hero";
 
-import { trpc } from "../utils/trpc";
-
 const Home: NextPage = () => {
-  const { data: bakeries } = trpc.useQuery(["bakery.getAll"]);
-
   return (
     <>
       <Head>
@@ -20,7 +15,7 @@ const Home: NextPage = () => {
 
       <main className="container mx-auto flex flex-col pb-10">
         <Hero />
-        <CardsList />
+        <BakeriesList />
       </main>
     </>
   );
