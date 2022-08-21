@@ -4,6 +4,7 @@ enum Properties {
   Instagram = "Instagram",
   Status = "Status",
   Info = "Info",
+  Address = "Address",
   Name = "Name",
 }
 
@@ -20,29 +21,59 @@ export const getPropertyData = async ({
   });
 
 export const getBakeryData = async (id: string) => {
-  const name = await getPropertyData({
+  const name = (await getPropertyData({
     pageId: id,
     property: Properties.Name,
     // Typing in notion seems bad
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore:next-line
-  }).then((data) => data?.results[0]?.title?.text?.content);
+  }).then((data) => data?.results[0]?.title?.text?.content)) as string;
 
-  const info = await getPropertyData({
+  const info = (await getPropertyData({
     pageId: id,
     property: Properties.Info,
     // Typing in notion seems bad
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore:next-line
-  }).then((data) => data.results[0]?.rich_text?.text?.content);
+  }).then((data) => data.results[0]?.rich_text?.text?.content)) as string;
 
-  const instagram = await getPropertyData({
+  const address = (await getPropertyData({
+    pageId: id,
+    property: Properties.Address,
+    // Typing in notion seems bad
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore:next-line
+  }).then((data) => data.results[0]?.rich_text?.text?.content)) as string;
+
+  const instagram = (await getPropertyData({
     pageId: id,
     property: Properties.Instagram,
     // Typing in notion seems bad
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore:next-line
-  }).then((data) => data?.url);
+  }).then((data) => data?.url)) as string;
 
-  return { id, name, info, instagram };
+  const facebook = (await getPropertyData({
+    pageId: id,
+    property: Properties.Instagram,
+    // Typing in notion seems bad
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore:next-line
+  }).then((data) => data?.url)) as string;
+
+  const webpage = (await getPropertyData({
+    pageId: id,
+    property: Properties.Instagram,
+    // Typing in notion seems bad
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore:next-line
+  }).then((data) => data?.url)) as string;
+
+  return {
+    id,
+    name,
+    info,
+    address,
+    socialMediaLinks: { id, instagram, facebook, webpage },
+  };
 };

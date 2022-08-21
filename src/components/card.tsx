@@ -25,33 +25,39 @@ export function Card({
           <p className="text-sm sm:block">{address}</p>
         </div>
         <div className="flex space-x-2 items-center pt-2 justify-self-end">
-          <a
-            href={socialMediaLinks.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className="text-2xl">
-              <i className="ri-facebook-fill" />
-            </div>
-          </a>
-          <a
-            href={socialMediaLinks.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className="text-2xl">
-              <i className="ri-instagram-line" />
-            </div>
-          </a>
-          <a
-            href={socialMediaLinks.webpage}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className="text-2xl">
-              <i className="ri-global-line" />
-            </div>
-          </a>
+          {socialMediaLinks.facebook ?? (
+            <a
+              href={socialMediaLinks.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="text-2xl">
+                <i className="ri-facebook-fill" />
+              </div>
+            </a>
+          )}
+          {socialMediaLinks.instagram ?? (
+            <a
+              href={socialMediaLinks.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="text-2xl">
+                <i className="ri-instagram-line" />
+              </div>
+            </a>
+          )}
+          {socialMediaLinks.webpage ?? (
+            <a
+              href={socialMediaLinks.webpage}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="text-2xl">
+                <i className="ri-global-line" />
+              </div>
+            </a>
+          )}
         </div>
       </div>
     </div>
