@@ -25,7 +25,7 @@ export function Card({
           <p className="text-sm sm:block">{address}</p>
         </div>
         <div className="flex space-x-2 items-center pt-2 justify-self-end">
-          {socialMediaLinks.facebook ?? (
+          {socialMediaLinks.facebook && (
             <a
               href={socialMediaLinks.facebook}
               target="_blank"
@@ -36,7 +36,7 @@ export function Card({
               </div>
             </a>
           )}
-          {socialMediaLinks.instagram ?? (
+          {socialMediaLinks.instagram && (
             <a
               href={socialMediaLinks.instagram}
               target="_blank"
@@ -47,7 +47,7 @@ export function Card({
               </div>
             </a>
           )}
-          {socialMediaLinks.webpage ?? (
+          {socialMediaLinks.webpage && (
             <a
               href={socialMediaLinks.webpage}
               target="_blank"
