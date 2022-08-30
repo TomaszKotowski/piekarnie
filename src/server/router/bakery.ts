@@ -1,3 +1,5 @@
+import { addBakerySchema } from "@/types/bakery";
+
 import { createRouter } from "./context";
 
 export const bakeryRouter = createRouter()
@@ -12,6 +14,25 @@ export const bakeryRouter = createRouter()
     async resolve({ ctx }) {
       return ctx.prisma.bakery.findFirst({
         include: { socialMediaLinks: true },
+      });
+    },
+  })
+  .mutation("addBakery", {
+    input: addBakerySchema,
+    resolve({ ctx, input }) {
+      return ctx.prisma.bakery.create({
+        data: {
+          name: input.name,
+          address: "",
+          info: input.info,
+          socialMediaLinks: {
+            create: {
+              facebook: "#",
+              instagram: "#",
+              webpage: "#",
+            },
+          },
+        },
       });
     },
   });
